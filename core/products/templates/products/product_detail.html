@@ -1,0 +1,30 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+</head>
+<body>
+
+{% block content %}
+<h1>{{ product.name }}</h1>
+<p>{{ product.description }}</p>
+<p>Price: {{ product.price }}</p>
+<p>Available: {{ product.available }}</p>
+<p>Stock: {{ product.stock }}</p>
+
+<div class="product-images">
+    {% for image in product.images.all %}
+        <img src="{{ image.image.url }}" alt="{{ image.alt_text }}">
+    {% endfor %}
+</div>
+
+{% comment %} <a href="{% url 'all_products' %}">Back to all products</a> {% endcomment %}
+{% endblock %}
+
+</body>
+</html>
